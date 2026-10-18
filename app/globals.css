@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
+  --font-serif: var(--font-alice), 'Alice', Georgia, serif;
+  --font-script: 'Dreaming Outloud Script', 'Dreaming Outloud Script Pro', var(--font-caveat), cursive;
+
+  --color-sun: var(--sun);
+  --color-lavender: var(--lavender);
+  --color-coral: var(--coral);
+  --color-tangerine: var(--tangerine);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-fly-across: fly-across 26s linear infinite;
+  --animate-fly-bob: fly-bob 3.2s ease-in-out infinite;
+  --animate-boat-bob: boat-bob 3s ease-in-out infinite;
+  --animate-boat-drift: boat-drift 14s ease-in-out infinite;
+  --animate-wave: wave 18s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+:root {
+  color-scheme: light;
+  --sun: #ffd440;
+  --lavender: #8a6fd6;
+  --coral: #ff6b8b;
+  --tangerine: #ff9655;
+  --cream: #fff8e7;
+  --paper: #f6f6f4;
+  --ink: #2b2547;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: #fffdf7;
+  --card-foreground: var(--ink);
+  --popover: #fffdf7;
+  --popover-foreground: var(--ink);
+  --primary: var(--sun);
+  --primary-foreground: var(--ink);
+  --secondary: var(--paper);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper);
+  --muted-foreground: #5b5577;
+  --accent: var(--lavender);
+  --accent-foreground: var(--ink);
+  --destructive: #d6334f;
+  --border: var(--ink);
+  --input: var(--ink);
+  --ring: var(--lavender);
+  --radius: 0.875rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans;
+  }
+}
+
+@utility font-script {
+  font-family: var(--font-script);
+}
+
+@keyframes fly-across {
+  0% {
+    transform: translateX(-20vw);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+@keyframes fly-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-36px) rotate(6deg);
+  }
+}
+
+@keyframes boat-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(5deg);
+  }
+}
+
+@keyframes boat-drift {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(48px);
+  }
+}
+
+@keyframes wave {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-10deg);
+  }
+  50% {
+    transform: translate(10px, -14px) rotate(4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
